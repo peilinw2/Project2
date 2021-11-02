@@ -60,7 +60,7 @@ def bdfs(maze, alg):
     
     #build BFS
     if alg == 'BFS':
-          path =()
+          path =[]
     #initialize all values
           for v in maze.adjList
           v.dist = False
