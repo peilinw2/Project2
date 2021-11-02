@@ -60,35 +60,38 @@ def bdfs(maze, alg):
     
     #build BFS
     if alg == 'BFS':
-          path =[]
-    #initialize all values
-          for v in maze.adjList
-          v.dist = False
-          v.prev = None
+    # initialize all values
+        path = []
 
-    queue = Queue()
-    #push the start vertex into the queue and set it distance = 0
-    queue.push(maze.start)
-    maze.start.dist = 0
+        for v in maze.adjList:
+            v.dist = False
+            v.prev = None
+        queue = Queue()
+    # push the start vertex into the queue and set it distance = 0
+    # queue.push(maze.start)
+        maze.start.dist = 0
 
-    #obtain the current vertex
-    While not queue.isEmpty():
-        Current = queue.pop()
-       # if reach exist, break
-        if current == maze.exit:
-            path.append(maze.exit.rank)
-            while current.prev is not None:
-                previous = current.prev
-                path.append(previous.rank)
-                current = current.prev
-            break
-            #push the neighbour into the queue if they have not yet been visited
-        for v in current.neigh:
-                if v.dist == False:
-                    queue.push(v)
-                    v.prev = current
-                    v.vist = 0
-                    
+    # obtain the current vertex
+        while not queue.isEmpty():
+            current = queue.pop()
+
+    # if reach exist, break
+            if current == maze.exit:
+               path.append(maze.exit.rank)
+    # find path
+               while current.prev is not None:
+                   previous = current.prev
+                   path.append(previous.rank)
+                   current = current.prev
+               break
+
+    # push the neighbour into the queue if they have not yet been visited
+           for v in current.neigh:
+              if v.dist == False:
+                  queue.push(v)
+                  v.prev = current
+                  v.vist = 0
+
                     
 return path
 
