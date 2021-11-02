@@ -34,7 +34,7 @@ def bdfs(maze, alg):
     if alg == 'DFS':
     #initialize all values
         path = []
-        for v in maze.adjust:
+        for v in maze.adjList:
             v.visited = False
             v.prev = None
         stack = Stack()
@@ -57,6 +57,7 @@ def bdfs(maze, alg):
                     v.visited = True
                     stack.push(v)
                     v.prev = current
+
     
     #build BFS
     if alg == 'BFS':
