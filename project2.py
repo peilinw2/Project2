@@ -92,8 +92,8 @@ def bdfs(maze, alg):
                   queue.push(v)
                   v.prev = current
                   v.vist = 0
-
-                    
+                
+path.reverse()                
 return path
 
 
