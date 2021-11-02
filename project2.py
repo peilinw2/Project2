@@ -28,8 +28,7 @@ def bdfs(maze, alg):
     # If the alg is not BFS or DFS, raise exception.
     if (alg != 'BFS') and (alg != 'DFS'):
         raise Exception('Incorrect alg! Need BFS or DFS!')
-
-    ##### Your implementation goes here. #####
+    if alg == 'DFS'
     return []
     ##### Your implementation goes here. #####
 
