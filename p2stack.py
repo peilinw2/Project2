@@ -6,7 +6,7 @@ Fall 2021
 p2stack.py
 
 Partner 1: Amy Wang (pw137)
-Partner 2: Lu Liu
+Partner 2: Lu Liu （ll394)
 Date:
 """
 
