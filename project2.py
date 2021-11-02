@@ -77,7 +77,6 @@ def bdfs(maze, alg):
        # if reach exist, break
         if current == maze.exit:
             path.append(maze.exit.rank)
-            #find path
             while current.prev is not None:
                 previous = current.prev
                 path.append(previous.rank)
@@ -89,7 +88,9 @@ def bdfs(maze, alg):
                     queue.push(v)
                     v.prev = current
                     v.vist = 0
-
+                    
+                    
+return path
 
 
     
