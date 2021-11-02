@@ -29,6 +29,8 @@ def bdfs(maze, alg):
     if (alg != 'BFS') and (alg != 'DFS'):
         raise Exception('Incorrect alg! Need BFS or DFS!')
         
+        
+    #build DFS    
     if alg == 'DFS':
     #initialize all values
         path = []
@@ -43,10 +45,20 @@ def bdfs(maze, alg):
         while not stack.isEmpty():
             current = stack.pop()
     #if reach exist, break
+            if current == maze.exit:
+    #find path
+                while current is not None:
+                    path.append(current.rank)
+                    current = current.prev
+                break
+    #check neighbors,mark itn and push it onto stack.
+            for v in current.neigh:
+                if v.visited is False:
+                    v.visited = True
+                    stack.push(v)
+                    v.prev = current
     
-    
-    
-    return []
+    #build BFS
     if alg == 'BFS':
           path =()
     #Initialize all values
