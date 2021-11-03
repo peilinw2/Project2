@@ -5,9 +5,9 @@ Fall 2021
 
 p2queue.py
 
-Partner 1: Amy Wang
-Partner 2: Lu Liu
-Date: 11/02/2021
+Partner 1:Amy Wang(pw137)
+Partner 2:Lu Liu(ll394)
+Date:
 """
 
 """
@@ -25,8 +25,8 @@ class Queue:
 
     """
     __init__ function to initialize the Queue.
-    Note: initially the size of the queue defaults to 3.
-    Note: the queue is initially filled with None values.
+    Note: intially the size of the queue defaults to 3.
+    Note: the queue is initally filled with None values.
     """
     def __init__(self, size=3):
         self.queue = [None for x in range(0,size)]
@@ -51,7 +51,6 @@ class Queue:
     def isFull(self):
         if self.numElems == len(self.queue):
             return True
-        return False
 
 
     """
@@ -60,52 +59,48 @@ class Queue:
     def isEmpty(self):
         if self.numElems == 0:
             return True
-        return False
+
 
     """
     resize function to resize the queue by doubling its size.
     Note: we also reset the front to index 0.
-    Input:queue
-    Output:queue with the resized array
     """
     def resize(self):
-        # Reset the front to index 0
-        if self.rear <= self.front:
-            self.queue = self.queue[self.front:] + self.queue[self.rear:]
+        self.queue = self.queue[self.front:] + self.queue[:self.rear] + [None for x in range(0,len(self.queue))]
         self.front = 0
         self.rear = self.numElems
-        #Resize the queue by doubling its size
-        self.queue = self.queue + [None for x in self.queue]
         return
 
     """
     push function to push a value into the rear of the queue.
-    Input:queue and new value 
-    Ouput:queue with the value being pushed
     """
     def push(self, val):
-        #We first check if the queue is full, and we will resize if it is full
-        if self.isFull() is True:
+        #resize the queue if it is full
+        if self.isFull():
             self.resize()
-        #Wrap around the queue
         self.queue[self.rear] = val
-        self.rear = (self.rear +1) % len(self.queue)
-        self.numElems = self.numElems + 1
+        self.rear += 1
+        self.numElems += 1
+        #wrap around
+        if self.rear == len(self.queue):
+            self.rear = 0
         return
 
     """
     pop function to pop the value from the front of the queue.
-    Input: queue
-    Output: queue with the front element being removed
     """
     def pop(self):
-        #We first check if the queue is empty, and we will exit if the queue is empty
-        if self.isEmpty() is True:
+        # exit if the queue is empty
+        if self.isEmpty():
             return None
+        else:
+            Newpop = self.queue[self.front]
+            self.queue[self.front] = None
+            self.front += 1
+            self.numElems -= 1
         #Wrap around the queue
-        temp = self.queue[self.front]
-        self.front = (self.front +1) % len(self.queue)
-        self.numElems = self.numElems -1
-        return temp
-
+            if self.front >= len(self.queue):
+                self.front = 0
+            return Newpop
+        
 
