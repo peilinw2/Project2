@@ -5,8 +5,8 @@ Fall 2021
 
 p2queue.py
 
-Partner 1:Amy Wang(pw137)
-Partner 2:Lu Liu(ll394)
+Partner 1: Amy Wang (pw137)
+Partner 2: Lu Liu (ll394)
 Date:
 """
 
@@ -66,6 +66,7 @@ class Queue:
     Note: we also reset the front to index 0.
     """
     def resize(self):
+        #resize the queue and double the size
         self.queue = self.queue[self.front:] + self.queue[:self.rear] + [None for x in range(0,len(self.queue))]
         self.front = 0
         self.rear = self.numElems
@@ -94,13 +95,12 @@ class Queue:
         if self.isEmpty():
             return None
         else:
-            Newpop = self.queue[self.front]
+            popped = self.queue[self.front]
             self.queue[self.front] = None
             self.front += 1
             self.numElems -= 1
         #Wrap around the queue
             if self.front >= len(self.queue):
                 self.front = 0
-            return Newpop
-        
+            return popped
 

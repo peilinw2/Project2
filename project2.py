@@ -5,8 +5,8 @@ Fall 2021
 
 project2.py
 
-Partner 1:
-Partner 2:
+Partner 1: Amy Wang (pw137)
+Partner 2: Lu Liu (ll394)
 Date:
 """
 
@@ -28,8 +28,7 @@ def bdfs(maze, alg):
     # If the alg is not BFS or DFS, raise exception.
     if (alg != 'BFS') and (alg != 'DFS'):
         raise Exception('Incorrect alg! Need BFS or DFS!')
-        
-        
+
     #build DFS    
     if alg == 'DFS':
     #initialize all values
@@ -61,44 +60,36 @@ def bdfs(maze, alg):
     
     #build BFS
     if alg == 'BFS':
-    # initialize all values
+    #initialize all values
         path = []
-
         for v in maze.adjList:
-            v.dist = False
+            v.visited = False
             v.prev = None
+    #push the start vertex into the queue and set it distance = 0
+    #queue.push(maze.start)
         queue = Queue()
-    # push the start vertex into the queue and set it distance = 0
-    # queue.push(maze.start)
-        maze.start.dist = 0
-
-    # obtain the current vertex
+        maze.start.visited = True
+        queue.push(maze.start)
+    #obtain the current vertex
         while not queue.isEmpty():
             current = queue.pop()
-
-    # if reach exist, break
+    #if reach exist,break
             if current == maze.exit:
-               path.append(maze.exit.rank)
-    # find path
-               while current.prev is not None:
-                   previous = current.prev
-                   path.append(previous.rank)
-                   current = current.prev
-               break
+    #find path
+                while current is not None:
 
-    # push the neighbour into the queue if they have not yet been visited
-           for v in current.neigh:
-              if v.dist == False:
-                  queue.push(v)
-                  v.prev = current
-                  v.vist = 0
-                
-path.reverse()                
-return path
-
-
-    
-    
+                    path.append(current.rank)
+                    current = current.prev
+                break
+    #push the neighbour into the queue if they have not yet been visited
+            for v in current.neigh:
+                if v.visited is False:
+                    v.visited = True
+                    queue.push(v)
+                    v.prev = current
+    #reverse path to get the correct order
+    path.reverse()
+    return path
 
 """
 Main function.
